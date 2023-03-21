@@ -1,4 +1,5 @@
 package modeoDAO;
+import entites.Department;
 import entites.Seller;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface SellerDao {
     void deleteById(Integer id);
     Seller findById(Integer id);
     List<SellerDao> findAll();
+    List<Seller> findByDepartment(Department department);
 }
