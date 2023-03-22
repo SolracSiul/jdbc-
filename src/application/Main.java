@@ -7,9 +7,12 @@ import modeoDAO.SellerDao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         System.out.println("=== TESTE1: SELLER findByID");
@@ -30,6 +33,21 @@ public class Main {
         Seller newSeller = new Seller(null, "sorak", "srk@gmail.com", new Date(), 4000.0, dep);
         sellerDao.insert(newSeller);
         System.out.println("Insert! New id = " + newSeller.getId());
+
+        System.out.println("\n=== TESTEe: SELLER update");
+        seller = sellerDao.findById(1);
+        seller.setName("SorakSiul");
+        sellerDao.update(seller);
+        System.out.println("Atualizado");
+
+        System.out.println("\n=== TEST 6: seller delete =====");
+        System.out.println("informe o id para ser deletado");
+        int id = scan.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Deletado com sucesso");
+
+
+        scan.close();
 
     }
 }
